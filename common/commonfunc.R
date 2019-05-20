@@ -67,3 +67,19 @@ clean.vec<-function(text.vec){
   return(text.vec)
 }
 
+## function for blank removal 
+blank.removal<-function(x) {
+  x<-unlist(strsplit(x,' '))
+  x<-subset(x,nchar(x)>0)
+  x<-paste(x,collapse = ' ')
+}
+
+
+## function for use with LDA - to get best topic by article from LDA model
+doc.assignment <- function (x) {
+  x<- table(x)
+  x<-as.matrix(x)
+  x<-t(x)
+  x<-max.col(x)
+}
+
